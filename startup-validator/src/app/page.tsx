@@ -5,10 +5,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
-import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { Sparkles, TerminalSquare, ArrowRight, Mic, MicOff, Upload, FileText } from "lucide-react";
+import { TerminalSquare, ArrowRight, Mic, MicOff, Upload, FileText } from "lucide-react";
 import { ResultsCard, StartupData } from "@/components/ResultsCard";
 import { useToast } from "@/hooks/use-toast";
 
@@ -153,7 +152,7 @@ export default function Home() {
                 Is your startup idea actually good?
               </h1>
               <p className="text-lg sm:text-xl text-white/60 w-full max-w-2xl mx-auto text-balance font-medium leading-relaxed">
-                Stop wasting time building things nobody wants. Just type in your idea, upload a pitch deck, or drop a competitor's link. We'll search the internet to tell you who else is doing it, if there's real demand, and exactly what you need to do next.
+                Stop wasting time building things nobody wants. Just type in your idea, upload a pitch deck, or drop a competitor&apos;s link. We&apos;ll search the internet to tell you who else is doing it, if there&apos;s real demand, and exactly what you need to do next.
               </p>
             </div>
 

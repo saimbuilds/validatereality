@@ -3,7 +3,7 @@
 import { motion, Variants } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowUpRight, CheckCircle2, MessageSquare, Target, Wallet, Rocket, Users, Calendar, MapPin, Send, Download, Loader2 } from "lucide-react";
+import { ArrowUpRight, MessageSquare, Download, Loader2 } from "lucide-react";
 import { ShareTicket } from "./ShareTicket";
 import { useState } from "react";
 import html2canvas from "html2canvas";

@@ -1,10 +1,10 @@
 import { NextResponse } from "next/server";
-import { GoogleGenAI } from "@google/genai";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import pdfParse from "pdf-parse-new";
 
 export const dynamic = "force-dynamic";
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+const ai = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || "");
 
 // The schema is strictly requested in the prompt due to Gemini Tool usage constraints with JSON mode.
 
@@ -130,17 +130,15 @@ export async function POST(req: Request) {
         ${finalContext}
         `;
 
-        const result = await ai.models.generateContent({
-            model: "gemini-2.5-flash",
-            contents: prompt,
-            config: {
-                tools: [{ googleSearch: {} }],
-                temperature: 0.7,
-            }
+        const model = ai.getGenerativeModel({
+            model: "gemini-1.5-flash",
+            tools: [{ googleSearchRetrieval: {} }]
         });
 
-        const rawText = result.text || "";
-        const cleanJson = rawText.replace(/```json / gi, "").replace(/```/g, "").trim();
+        const result = await model.generateContent(prompt);
+        const response = await result.response;
+        const rawText = await response.text();
+        const cleanJson = rawText.replace(/```json/gi, "").replace(/```/gi, "").trim();
         const responseText = cleanJson;
 
         return new NextResponse(responseText, {
